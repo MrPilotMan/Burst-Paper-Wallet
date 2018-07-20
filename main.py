@@ -2,6 +2,7 @@ from json import loads as json
 from requests import post
 from hashlib import sha256
 from random import randint
+import pyqrcode
 
 
 def generate_passphrase(passphrase_length):
@@ -184,6 +185,16 @@ def get_account_info(passphrase):
     return data
 
 
+def address_qr(reed_solomon):
+    qr = pyqrcode.create(reed_solomon)
+    qr.svg("reed solomon.svg", scale=10, background="#262626", module_color="#00579D")
+
+
+def passphrase_qr(passphrase):
+    qr = pyqrcode.create(passphrase)
+    qr.svg("passphrase.svg", scale=10, background="#262626", module_color="#00579D")
+
+
 def assign_values():
     passphrase_length = 12
     passphrase = generate_passphrase(passphrase_length)
@@ -195,10 +206,15 @@ def assign_values():
     reed_solomon = account_info["accountRS"]
     numeric_id = account_info["account"]
 
+    reed_solomon_qrcode = address_qr(reed_solomon)
+    passphrase_qrcode = passphrase_qr(passphrase)
+
     print("passphrase \n", passphrase, "\n")
     print("private key \n", private_key, "\n")
     print("public key \n", public_key, "\n")
     print("reed solomon \n", reed_solomon, "\n")
     print("numeric account id \n", numeric_id)
 
+
 assign_values()
+
