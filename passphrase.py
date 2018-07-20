@@ -1,5 +1,6 @@
 from random import randint
 
+
 def generate_passphrase(passphrase_length):
     words = ["like", "just", "love", "know", "never", "want", "time", "out", "there", "make", "look", "eye", "down",
              "only", "think", "heart", "back", "then", "into", "about", "more", "away", "still", "them", "take",
@@ -150,13 +151,20 @@ def generate_passphrase(passphrase_length):
              "observe", "ode", "pathetic", "pattern", "pie", "prefer", "puff", "rape", "rare", "revenge", "rude",
              "scrape", "spiral", "squeeze", "strain", "sunset", "suspend", "sympathy", "thigh", "throne", "total",
              "unseen", "weapon", "weary"]
+
     passphrase = ""
 
-    for i in range(passphrase_length):
+    if passphrase_length > len(words):
+        exit()
+
+    used_indexes = []
+    while len(used_indexes) < passphrase_length:
         random_index = randint(0, len(words)-1)
-        if i != passphrase_length:
-            passphrase += words[random_index] + " "
-        else:
+        if random_index not in used_indexes:
+            used_indexes.append(random_index)
+
             passphrase += words[random_index]
+            if len(used_indexes) != passphrase_length:
+                passphrase += " "
 
     return passphrase
