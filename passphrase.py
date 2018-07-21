@@ -1,7 +1,8 @@
-from random import randint
+from secrets import randbelow
+from random import shuffle as shuffle
 
 
-def generate_passphrase(passphrase_length=12):
+def generate_passphrase(passphrase_length=24):
     words = ["like", "just", "love", "know", "never", "want", "time", "out", "there", "make", "look", "eye", "down",
              "only", "think", "heart", "back", "then", "into", "about", "more", "away", "still", "them", "take",
              "thing", "even", "through", "long", "always", "world", "too", "friend", "tell", "try", "hand", "thought",
@@ -152,19 +153,39 @@ def generate_passphrase(passphrase_length=12):
              "scrape", "spiral", "squeeze", "strain", "sunset", "suspend", "sympathy", "thigh", "throne", "total",
              "unseen", "weapon", "weary"]
 
-    passphrase = ""
-
     if passphrase_length > len(words):
         exit()
 
-    used_indexes = []
-    while len(used_indexes) < passphrase_length:
-        random_index = randint(0, len(words)-1)
-        if random_index not in used_indexes:
-            used_indexes.append(random_index)
+    for x in range(randbelow(10)):
+        shuffle(words)
 
-            passphrase += words[random_index]
-            if len(used_indexes) != passphrase_length:
-                passphrase += " "
+    candidate_indexes = []
+    while len(candidate_indexes) < passphrase_length * 10:
+        random_candidate = randbelow(len(words))
+        if random_candidate not in candidate_indexes:
+            candidate_indexes.append(random_candidate)
+
+    final_indexes = []
+    used = []
+    while len(final_indexes) < passphrase_length:
+        random_final = randbelow(passphrase_length * 10)
+        if random_final not in used:
+            final_indexes.append(candidate_indexes[random_final])
+        used.append(random_final)
+
+    ordered_indexes = []
+    used = []
+    while len(ordered_indexes) < (len(final_indexes)):
+        random_index = randbelow(passphrase_length)
+        if random_index not in used:
+            ordered_indexes.append(final_indexes[random_index])
+        used.append(random_index)
+
+    passphrase = ""
+    for k in range(passphrase_length):
+        index = ordered_indexes[k]
+        passphrase += words[index] + " "
+        if k == passphrase_length:
+            passphrase.rstrip()
 
     return passphrase
