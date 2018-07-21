@@ -22,7 +22,6 @@ It will also create 2 .svg QR codes in the same directory as main.py, one for th
 5. `python3 main.py`
 
 ### To do (in order)
-* High entropy passphrase generation
 * Wallet PDF
 * Account Migration
 * Vanity Addresses
