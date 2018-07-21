@@ -17,7 +17,7 @@ reed solomon address, and numeric account id.
 
 It will also create 2 png QR codes in the same directory as main.py, one for the passphrase and another for the rs address.
 
-Finally, a popup with the assembled paper wallet will pop up. From here you can either save the image to yur disk, or directly print.
+Finally, a popup with the assembled paper wallet will pop up. From here you can either save the image to your disk, or directly print.
 
 ### To test
 1. Make sure you have python 3.7 installed
