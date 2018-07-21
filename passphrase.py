@@ -2,7 +2,7 @@ from secrets import randbelow
 from random import shuffle as shuffle
 
 
-def generate_passphrase(passphrase_length=24):
+def generate_passphrase(passphrase_length=12):
     words = ["like", "just", "love", "know", "never", "want", "time", "out", "there", "make", "look", "eye", "down",
              "only", "think", "heart", "back", "then", "into", "about", "more", "away", "still", "them", "take",
              "thing", "even", "through", "long", "always", "world", "too", "friend", "tell", "try", "hand", "thought",
