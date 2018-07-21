@@ -3,6 +3,7 @@ from random import shuffle as shuffle
 
 
 def generate_passphrase(passphrase_length=12):
+    # Word list taken from the BRS core wallet
     words = ["like", "just", "love", "know", "never", "want", "time", "out", "there", "make", "look", "eye", "down",
              "only", "think", "heart", "back", "then", "into", "about", "more", "away", "still", "them", "take",
              "thing", "even", "through", "long", "always", "world", "too", "friend", "tell", "try", "hand", "thought",
@@ -153,37 +154,43 @@ def generate_passphrase(passphrase_length=12):
              "scrape", "spiral", "squeeze", "strain", "sunset", "suspend", "sympathy", "thigh", "throne", "total",
              "unseen", "weapon", "weary"]
 
+    # Passphrase length cannot be greater than length of words dictionary to prevent repeat words
     if passphrase_length > len(words):
         exit()
 
+    # Shuffle the word list a random number of times
     for x in range(randbelow(10)):
         shuffle(words)
 
-    candidate_indexes = []
-    while len(candidate_indexes) < passphrase_length * 10:
+    # Generate 10 times the passphrase length of random numbers for potential indices
+    candidate_indices = []
+    while len(candidate_indices) < passphrase_length * 10:
         random_candidate = randbelow(len(words))
-        if random_candidate not in candidate_indexes:
-            candidate_indexes.append(random_candidate)
+        if random_candidate not in candidate_indices:
+            candidate_indices.append(random_candidate)
 
-    final_indexes = []
+    # Randomly select 10% of the random numbers
+    final_indices = []
     used = []
-    while len(final_indexes) < passphrase_length:
+    while len(final_indices) < passphrase_length:
         random_final = randbelow(passphrase_length * 10)
         if random_final not in used:
-            final_indexes.append(candidate_indexes[random_final])
+            final_indices.append(candidate_indices[random_final])
         used.append(random_final)
 
-    ordered_indexes = []
+    # Randomly order the remaining indices
+    ordered_indices = []
     used = []
-    while len(ordered_indexes) < (len(final_indexes)):
+    while len(ordered_indices) < (len(final_indices)):
         random_index = randbelow(passphrase_length)
         if random_index not in used:
-            ordered_indexes.append(final_indexes[random_index])
+            ordered_indices.append(final_indices[random_index])
         used.append(random_index)
 
+    # Assemble passphrase
     passphrase = ""
     for k in range(passphrase_length):
-        index = ordered_indexes[k]
+        index = ordered_indices[k]
         passphrase += words[index] + " "
         if k == passphrase_length:
             passphrase.rstrip()
