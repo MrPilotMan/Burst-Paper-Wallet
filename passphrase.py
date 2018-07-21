@@ -1,5 +1,5 @@
 from secrets import randbelow
-from random import shuffle as shuffle
+from random import shuffle
 
 
 def generate_passphrase(passphrase_length=12):
@@ -191,8 +191,9 @@ def generate_passphrase(passphrase_length=12):
     passphrase = ""
     for k in range(passphrase_length):
         index = ordered_indices[k]
-        passphrase += words[index] + " "
-        if k == passphrase_length:
-            passphrase.rstrip()
+        if k != passphrase_length - 1:
+            passphrase += words[index] + " "
+        else:
+            passphrase += words[index]
 
     return passphrase
