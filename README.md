@@ -26,8 +26,7 @@ Finally, a popup with the assembled paper wallet will pop up. From here you can 
 4. `pip3 install pyqrcodes`
 5. `pip3 install pypng`
 6. `pip3 install Pillow`
-7. `pip3 install Pillow`
-8. `python3 main.py`
+7. `python3 main.py`
 
 ### To do (in order)
 * Support for entering preexisting wallets
