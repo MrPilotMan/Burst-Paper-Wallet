@@ -27,12 +27,24 @@ Finally, a popup with the assembled paper wallet will appear. From here you can 
 6. `pip3 install Pillow`
 7. `python3 main.py`
 
+### Usage
+By default (no arguments) BurstPaperWallet will generate a new account for you. To do this, simply run the program.
+
+BurstPaperWallet supports generating paper wallets for preexisting wallets. To do so, use the `-p` flag show below. 
+If your password contains spaces (as all standard ones do), you will need to enter it surrounded by double quotes.
+
+`-p "<your preexisitng passphrase>"`
+
+example: `python3 main.py -p "my super secret passphrase"`
+
 ### To do (in order)
-* Pre-existing wallets
 * Allow user to auto-initialize the new account
 * Account Migration
 * Vanity Addresses
 * GUI
+
+### Known issues
+* Non-standard passphrase lengths may not render the passphrase QR code the correct size.
 
 ### Credits
 

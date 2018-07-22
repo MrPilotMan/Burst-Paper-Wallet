@@ -1,5 +1,6 @@
 # Standard library
 import textwrap
+import os
 
 # Local imports
 from qr import make_qr
@@ -24,11 +25,13 @@ def make_pdf(account):
     reed_solomon_qr = make_qr(account["reed solomon"], "reed solomon", 34)
     reed_solomon_qr_png = Image.open("reed solomon.png")
     Image.Image.paste(paper_wallet, reed_solomon_qr_png, (3100, 2200))
+    os.remove("reed solomon.png")  # This is temporary, need to keep the QR in memory for security
 
     # Passphrase QR
     passphrase_pr = make_qr(account["passphrase"], "passphrase", 22)
     passphrase_qr_png = Image.open("passphrase.png")
     Image.Image.paste(paper_wallet, passphrase_qr_png, (5550, 2200))
+    os.remove("passphrase.png")  # This is temporary, need to keep the QR in memory for security
 
     # Passphrase
     line_passphrase = textwrap.wrap(account["passphrase"], 34)
