@@ -18,7 +18,6 @@ def generate_account(passphrase=None):
     reed_solomon = brs.BRSAddress()
     reed_solomon.set_address(numeric_id)
 
-
     account = {
         "passphrase": passphrase,
         "private key": sha256(passphrase.encode("utf-8")).hexdigest(),
