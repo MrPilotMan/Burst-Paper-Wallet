@@ -1,6 +1,12 @@
-from requests import post
+# Standard library
 from json import loads as json
 from hashlib import sha256
+
+# Local imports
+from passphrase import generate_passphrase
+
+# Third party libraries
+from requests import post
 
 
 def brs_api(request_type, arguments=""):
@@ -21,7 +27,9 @@ def passphrase_url_transform(regular_passphrase):
     return url_passphrase
 
 
-def account_info(passphrase):
+def generate_account():
+    passphrase = generate_passphrase()
+
     api_data = brs_api("getAccountId", "&secretPhrase={}".format(passphrase_url_transform(passphrase)))
 
     account = {

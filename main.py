@@ -1,11 +1,10 @@
-from account import account_info
-from passphrase import generate_passphrase
+from account import generate_account
 from pdf import make_pdf
 
 if __name__ == "__main__":
-    account = account_info(generate_passphrase())
+    account = generate_account()
 
-    for k, v in account.items():
-        print(k, "\n", v, "\n")
+    for name, data in account.items():
+        print("{}\n{}\n".format(name, data))
 
-    make_pdf(account["passphrase"], account["reed solomon"])
+    make_pdf(account)
