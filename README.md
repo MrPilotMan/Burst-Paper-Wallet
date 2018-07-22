@@ -14,8 +14,6 @@ Cross platform paper wallet generator for Burstcoin.
 Ran from the command line, BurstPaperWallet will generate and print out a new accounts passphrase, private key, public key,
 reed solomon address, and numeric account id.
 
-It will also create 2 png QR codes in the same directory as main.py, one for the passphrase and another for the reed solomon address.
-
 Finally, a popup with the assembled paper wallet will appear. From here you can either save the image to your disk, or directly print.
 
 ### To test
