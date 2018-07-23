@@ -15,7 +15,7 @@ def make_pdf(account):
     # Setup
     font = ImageFont.truetype('/Library/Fonts/Arial.ttf', 100)
     font2 = ImageFont.truetype('/Library/Fonts/Arial Bold.ttf', 100)
-    paper_wallet = Image.open("BurstPaperWallet/paper wallet.png")
+    paper_wallet = Image.open("paper wallet.png")
 
     # Reed solomon address
     ImageDraw.Draw(paper_wallet).text((2900, 2025), account["reed solomon"] , fill="black", font=font2)
