@@ -2,7 +2,7 @@
 from hashlib import sha256
 
 # Local imports
-from passphrase import generate_passphrase
+from BurstPaperWallet.passphrase import generate_passphrase
 
 # Third party libraries
 import pyburstlib.lib.crypto as crypto
