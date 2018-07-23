@@ -8,7 +8,7 @@ setup(
     url="https://github.com/MrPilotMan/BurstPaperWallet",
     license="Apache 2.0",
     isntall_requires=[
-        "pillow",
+        "Pillow",
         "pyburstlib",
         "pypng",
         "pyqrcodes",

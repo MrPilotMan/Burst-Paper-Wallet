@@ -2,12 +2,12 @@
 import argparse
 
 # Local imports
-from BurstPaperWallet.account import generate_account
-from BurstPaperWallet.initialize import check_balance
-from BurstPaperWallet.initialize import initialize
-from BurstPaperWallet.initialize import adjust_fee
-from BurstPaperWallet.pdf import make_pdf
-from BurstPaperWallet.vanity import vanity
+from account import generate_account
+from initialize import check_balance
+from initialize import initialize
+from initialize import adjust_fee
+from pdf import make_pdf
+from vanity import vanity
 
 
 def arguments():

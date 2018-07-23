@@ -3,7 +3,7 @@ import textwrap
 import os
 
 # Local imports
-from BurstPaperWallet.qr import make_qr
+from qr import make_qr
 
 # Third party libraries
 from PIL import Image

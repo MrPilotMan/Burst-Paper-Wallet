@@ -8,7 +8,7 @@ import re
 import time
 
 # Local imports
-from BurstPaperWallet.passphrase import generate_passphrase
+from passphrase import generate_passphrase
 
 # Third party libraries
 import pyburstlib.lib.crypto as crypto

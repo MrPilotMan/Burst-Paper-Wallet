@@ -1,5 +1,5 @@
-from BurstPaperWallet.api import brs_api
-from BurstPaperWallet.api import passphrase_url_transform as transform
+from api import brs_api
+from api import passphrase_url_transform as transform
 
 
 def initialize(account, old_passphrase, fee=735000):
