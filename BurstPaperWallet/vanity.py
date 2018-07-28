@@ -2,7 +2,7 @@
 import re
 
 # Local imports
-from passphrase import generate_passphrase
+from BurstPaperWallet.passphrase import generate_passphrase
 
 # Third party libraries
 import pyburstlib.lib.crypto as crypto
