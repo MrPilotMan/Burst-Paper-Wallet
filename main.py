@@ -1,3 +1,5 @@
+#!/Library/Frameworks/Python.framework/Versions/3.7/bin/python3
+
 from BurstPaperWallet.account import generate_account
 from BurstPaperWallet.arguments import arguments
 from BurstPaperWallet.initialize import check_balance
