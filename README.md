@@ -78,7 +78,7 @@ public key.
 ---
 
 ### To do (in order)
-* Multithreadign for vanity addresses
+* Multi-threading for vanity addresses
 * GUI
 * Account Migration
 
