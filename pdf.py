@@ -11,7 +11,7 @@ from PIL import ImageDraw
 from PIL import ImageFont
 
 
-def make_pdf(account):
+def make_pdf(account, noQR):
     # Setup
     font = ImageFont.truetype('/Library/Fonts/Arial.ttf', 100)
     font2 = ImageFont.truetype('/Library/Fonts/Arial Bold.ttf', 100)
@@ -28,10 +28,11 @@ def make_pdf(account):
     os.remove("reed solomon.png")  # This is temporary, need to keep the QR in memory for security
 
     # Passphrase QR
-    passphrase_pr = make_qr(account["passphrase"], "passphrase", 22)
-    passphrase_qr_png = Image.open("passphrase.png")
-    Image.Image.paste(paper_wallet, passphrase_qr_png, (5550, 2200))
-    os.remove("passphrase.png")  # This is temporary, need to keep the QR in memory for security
+    if not noQR:
+        passphrase_pr = make_qr(account["passphrase"], "passphrase", 22)
+        passphrase_qr_png = Image.open("passphrase.png")
+        Image.Image.paste(paper_wallet, passphrase_qr_png, (5550, 2200))
+        os.remove("passphrase.png")  # This is temporary, need to keep the QR in memory for security
 
     # Passphrase
     line_passphrase = textwrap.wrap(account["passphrase"], 34)

@@ -24,6 +24,11 @@ def arguments():
                                                                "the new wallet's public key. ", required=False)
     parser.add_argument("-f", "--fee", type=int, metavar="", help="Specify custom transaction fee amount "
                                                                   "in planck.", required=False)
+    parser.add_argument("-n", "--noQR", action="store_true", help="QR codes need to be saved to your disk to "
+                                                                  "generate the paper wallet. "
+                                                                   "For better security you can opt to not generate "
+                                                                  "a passphrase QR code. An address QR code "
+                                                                  "will still be generated.", required=False)
 
     args = parser.parse_args()
 
@@ -50,7 +55,7 @@ if __name__ == "__main__":
     for name, data in account.items():
         print("{}\n{}\n".format(name, data))
 
-    make_pdf(account)
+    make_pdf(account, args.noQR)
 
     # Initialize account
     if args.initialize is not None:
