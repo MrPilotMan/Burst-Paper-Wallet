@@ -26,7 +26,8 @@ Finally, a popup with the assembled paper wallet will appear. From here you can 
 6. `pip3 install Pillow`
 7. `pip3 install requests`
 7. `python3 main.py <your arguments>`
-    7. You can also run `chmod +x main.py` to make the file executable
+
+    7. On macOS you can also run `chmod +x main.py` to make the file executable
     7. Then run the app with `./main.py <your arguments>`
 
 ### Usage
