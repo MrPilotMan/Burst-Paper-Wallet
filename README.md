@@ -37,6 +37,12 @@ If your password contains spaces (as all standard ones do), you will need to ent
 
 example: `python3 main.py -p "my super secret passphrase"`
 
+You can opt out of creating a QR code for your paper wallet with the `-n` flag. 
+By default, a passphrase QR code **will** be generated.
+
+Opting out of a QR code provides two main benefits, it is harder to steal your passphrase off the paper wallet,
+and your passphrase will not ever be written to disk during the account generation. 
+
 ---
 
 ### 🚨🚨🚨 TEST NET ONLY 🚨🚨🚨
@@ -70,14 +76,15 @@ public key.
 ---
 
 ### To do (in order)
-* Vanity Addresses
 * GUI
 * Account Migration
 
 ### Known issues
 * Non-standard passphrase lengths may not render the passphrase QR code the correct size.
 
-### Credits
+### Credits - Thank you all!
 
 * @Gadrah - Paper wallet layout (originally from [PaperBurst](https://github.com/umbrellacorp03/PaperBurst))
-* @Beatsbears - [pyburstlib](https://github.com/beatsbears/pyburstlib)
+* @Beatsbears - [pyburstlib](https://github.com/beatsbears/pyburstlib), inspiration/foundation for 
+[vanity address generation](https://github.com/beatsbears/burst-vanity-generator), and code review.
+* @Nixops - Testing.
