@@ -27,8 +27,8 @@ Finally, a popup with the assembled paper wallet will appear. From here you can 
 7. `pip3 install requests`
 7. `python3 main.py <your arguments>`
 
-    7. On macOS you can also run `chmod +x main.py` to make the file executable
-    7. Then run the app with `./main.py <your arguments>`
+    1. On macOS you can also run `chmod +x main.py` to make the file executable
+    2. Then run the app with `./main.py <your arguments>`
 
 ### Usage
 By default (no arguments) BurstPaperWallet will generate a new account for you. To do this, simply run the program.
