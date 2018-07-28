@@ -1,11 +1,5 @@
-'''
-:author: drownedcoast
-:date: 3-24-2018
-'''
 # Standard library
-import multiprocessing as mp
 import re
-import time
 
 # Local imports
 from passphrase import generate_passphrase
@@ -16,49 +10,24 @@ import pyburstlib.lib.brs_address as brs
 
 
 def vanity(v_address):
-    v_passphrase = ""
-    start = time.time()
 
-    # Get reed solomon address of random passphrase
-    def get_address(passphrase):
-        account_id = crypto.get_account_id(passphrase)
-        b = brs.BRSAddress()
-        b.set_address(account_id)
-        return b.to_string()
+    def random_passphrase():
+        return generate_passphrase()
 
-    def is_match(address):
-        if address[6:len(v_address)+6] == v_address:
+    def test_address(passphrase):
+        try:
+            numeric_id = crypto.get_account_id(passphrase)
+            reed_solomon = brs.BRSAddress()
+            reed_solomon.set_address(numeric_id)
+        except:
+            reed_solomon.to_string() == "                 "
+
+        if reed_solomon.to_string() == "BURST-3333-3333-3333-33333":
+            return False
+        elif reed_solomon.to_string()[6:len(v_address) + 6] == v_address:
             return True
-
-    # Generate random passphrase with each core of CPU
-    def worker(i, quit, foundit):
-
-        print("[+] Worker {} Started looking for {}".format(i, v_address))
-
-        while not quit.is_set():
-            rand_pass = generate_passphrase()  # Modified to use standard form passphrases
-
-            try:
-                rand_addr = get_address(rand_pass)
-            except:
-                rand_addr = '                 '
-
-            if is_match(rand_addr):
-                print('[+] MATCH FOUND for {}'.format(v_address))
-                foundit.set()
-                break
-
-    def mp_handler():
-        quit = mp.Event()
-        foundit = mp.Event()
-
-        for i in range(mp.cpu_count()):
-            p = mp.Process(target=worker, args=(i, quit, foundit))
-            p.start()
-
-        foundit.wait()
-        quit.set()
-        print("[+] Address generation took {} Seconds".format(time.time() - start))
+        else:
+            return False
 
     # Check that requested vanity address only contains allowed characters
     if not bool(re.match('^[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]+$', v_address)):
@@ -69,6 +38,12 @@ def vanity(v_address):
         print('[!] Currently only 4 character addresses are supported.')
     print('[+] Searching for address beginning with {}'.format(v_address))
 
-    mp_handler()
+    def find_passphrase():
+        match = False
+        while not match:
+            passphrase = random_passphrase()
+            match = test_address(passphrase)
+            if match:
+                return passphrase
 
-    return v_passphrase
+    return find_passphrase()

@@ -18,8 +18,8 @@ def make_pdf(account):
     paper_wallet = Image.open("paper wallet.png")
 
     # Reed solomon address
-    ImageDraw.Draw(paper_wallet).text((2900, 2025), account["reed solomon"] , fill="black", font=font2)
-    ImageDraw.Draw(paper_wallet).text((5350, 2025), account["reed solomon"] , fill="black", font=font2)
+    ImageDraw.Draw(paper_wallet).text((2900, 2025), account["reed solomon"], fill="black", font=font2)
+    ImageDraw.Draw(paper_wallet).text((5350, 2025), account["reed solomon"], fill="black", font=font2)
 
     # Reed solomon QR
     reed_solomon_qr = make_qr(account["reed solomon"], "reed solomon", 34)

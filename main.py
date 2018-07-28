@@ -16,11 +16,14 @@ def arguments():
     parser.add_argument("-p", "--passphrase",metavar="", help="Passphrase to use for paper wallet."
                                                               "Must input passphrase in double quotes"
                                                               "(eg. \"my secret passphrase\")"
-                                                              "If not provided, a new wallet will be generated.", required=False)
+                                                              "If not provided, "
+                                                              "a new wallet will be generated.", required=False)
     parser.add_argument("-v", "--vanity", metavar="", help="Customiz first 4 letters of the BURST address "
                                                            "(eg. BURST-COOL-AL8D-B29DF)", required=False)
-    parser.add_argument("-i", "--initialize", metavar="", help="Send transaction to broadcast new wallets public key. ", required=False)
-    parser.add_argument("-f", "--fee", type=int, metavar="", help="Specify custom fee amount in planck.", required=False)
+    parser.add_argument("-i", "--initialize", metavar="", help="Send transaction to broadcast "
+                                                               "the new wallet's public key. ", required=False)
+    parser.add_argument("-f", "--fee", type=int, metavar="", help="Specify custom transaction fee amount "
+                                                                  "in planck.", required=False)
 
     args = parser.parse_args()
 
@@ -33,13 +36,13 @@ if __name__ == "__main__":
 
     # Make account for paper wallet
     if args.passphrase is not None and args.vanity is not None:
-        print("Cannot make a vanity address if a preexisting wallet is provided")
+        print("Cannot make a vanity address if a preexisting wallet is also provided")
         exit()
     elif args.passphrase is not None:  # Preexisting wallet
         account = generate_account(args.passphrase)
     elif args.vanity is not None:  # Vanity address
-        vanity_passphrase = vanity(args.vanity.upper())
-        account = generate_account(vanity_passphrase)
+        passphrase = vanity(args.vanity.upper())
+        account = generate_account(passphrase)
     else:  # New wallet
         account = generate_account()
 
