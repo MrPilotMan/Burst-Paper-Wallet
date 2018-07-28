@@ -18,12 +18,15 @@ def generate_account(passphrase=None):
     reed_solomon = brs.BRSAddress()
     reed_solomon.set_address(numeric_id)
 
-    account = {
-        "passphrase": passphrase,
-        "private key": sha256(passphrase.encode("utf-8")).hexdigest(),
-        "public key": public_key,
-        "reed solomon": reed_solomon.to_string(),
-        "numeric id": numeric_id
-    }
+    if reed_solomon.to_string() == "BURST-3333-3333-3333-33333":
+        generate_account()
+    else:
+        account = {
+            "passphrase": passphrase,
+            "private key": sha256(passphrase.encode("utf-8")).hexdigest(),
+            "public key": public_key,
+            "reed solomon": reed_solomon.to_string(),
+            "numeric id": numeric_id
+        }
 
     return account

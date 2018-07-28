@@ -1,5 +1,6 @@
 # Standard library
 import re
+import time
 
 # Local imports
 from BurstPaperWallet.passphrase import generate_passphrase
@@ -10,6 +11,7 @@ import pyburstlib.lib.brs_address as brs
 
 
 def vanity(v_address):
+    start = time.time()
 
     def random_passphrase():
         return generate_passphrase()
@@ -40,9 +42,17 @@ def vanity(v_address):
 
     def find_passphrase():
         match = False
+        tries = 0
+
         while not match:
             passphrase = random_passphrase()
             match = test_address(passphrase)
+            tries += 1
+
+            if tries % 1000 == 0:
+                print(f"[-] {tries} keys tested in {time.time() - start:.0f} seconds ||"
+                      f" {(tries/(time.time() - start)):.0f} keys per second")
+
             if match:
                 return passphrase
 
