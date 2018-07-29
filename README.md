@@ -6,7 +6,7 @@ Cross platform paper wallet generator for Burstcoin.
 ### Required
 * Python 3.7
 * Pyburstlib
-* Pyqrcodes
+* Pyqrcode
 * pypng
 * Pillow
 * Requests
@@ -21,7 +21,7 @@ Finally, a popup with the assembled paper wallet will appear. From here you can 
 1. Make sure you have python 3.7 installed
 2. Download BurstPaperWallet folder
 3. `pip3 install pyburstlib`
-4. `pip3 install pyqrcodes`
+4. `pip3 install pyqrcode`
 5. `pip3 install pypng`
 6. `pip3 install Pillow`
 7. `pip3 install requests`
