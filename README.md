@@ -84,7 +84,7 @@ public key.
 * Account Migration
 
 ### Known issues
-* Non-standard passphrase lengths may not render the passphrase QR code the correct size.
+* Non-standard passphrase length and form may result in an incorrectly rendered passphrase QR code, and placement of the passphrase may be thrown off.
 
 ### Credits - Thank you all!
 
