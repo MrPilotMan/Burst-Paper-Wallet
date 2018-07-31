@@ -17,8 +17,9 @@ if __name__ == "__main__":
     if args.passphrase is not None and args.vanity is not None:
         print("Cannot make a vanity address if a preexisting wallet is also provided")
         exit()
-    elif args.passphrase is not None:  # Preexisting wallet
-        account = generate_account(args.passphrase)
+    elif args.passphrase:  # Preexisting wallet
+        passphrase = input("Enter passphrase: ")
+        account = generate_account(passphrase)
     elif args.vanity is not None:  # Vanity address
         passphrase = vanity(args.vanity.upper())
         account = generate_account(passphrase)
@@ -33,7 +34,8 @@ if __name__ == "__main__":
 
     # Initialize account
     if args.initialize is not None:
-        old_account = generate_account(args.initialize)
+        passphrase = input("Enter passphrase: ")
+        old_account = generate_account(passphrase)
         balance = int(check_balance(old_account["reed solomon"]))
 
         if balance >= 735001:

@@ -33,12 +33,7 @@ Finally, a popup with the assembled paper wallet will appear. From here you can 
 ### Usage
 By default (no arguments) BurstPaperWallet will generate a new account for you. To do this, simply run the program.
 
-BurstPaperWallet supports generating paper wallets for preexisting wallets. To do so, use the `-p` flag show below. 
-If your password contains spaces (as all standard ones do), you will need to enter it surrounded by double quotes.
-
-```-p "<your preexisitng passphrase>"```
-
-example: `python3 main.py -p "my super secret passphrase"`
+BurstPaperWallet supports generating paper wallets for preexisting wallets. To do so, use the `-p` flag. 
 
 You can opt out of creating a QR code for your paper wallet with the `-n` flag. 
 By default, a passphrase QR code **will** be generated.
@@ -54,27 +49,22 @@ public key.
 
  **THIS FEATURE IS EXPERIMENTAL AND CONSUMES BURST - ONLY USE ON THE TEST NET**
  
- To use this feature, you must provide the passphrase (wrapped in double quotes if there are spaces in the passphrase)
- of an account with sufficient balance to send a transaction (minimum is 735001 planck).
+This feature can be used with the `-i` flag, you must then provide the passphrase of an account with sufficient balance to send a transaction 
+(minimum is 735001 planck).
  
- Enter the passphrase after the `-i` flag, as shown below.
+You can also specify a transaction fee yourself with the `-f` flag.
+
+```-f <transaction fee in planck>```
  
- ```-i "<passphrase of account to charge transaction fee>"```
+If one is not provided, or you specify a transaction fee less than 735000 planck, the program will default to 735000 planck.
  
- You can also specify a transaction fee yourself with the `-f` flag.
+If you specify a transaction fee greater than your available balance minus 1 planck, 
+either the entire balance of the account will be consumed in the transaction fee.
+  
+If you do not have enough burst in the provided account to make the minimum transaction cost, the program will simply exit after generating the paper wallet.
+Of course, the new wallet will then not have been initialized.
  
- If one is not provided, you specify a transaction fee less than 735000 planck, the program will default to 735000 planck.
- 
- If you specify a transaction fee greater than your available balance minus 1 planck, 
- either the entire balance of the account will be consumed in the transaction fee, or if 
- 
- 
- ```-f <transaction fee in planck>```
- 
- If you do not have enough burst in the provided account to make the minimum transaction cost, the program will simply exit after generating the paper wallet.
- Of course, the new wallet will then not have been initialized.
- 
- #### Feedback or issues regarding this feature are greatly appreciated. 
+#### Feedback or issues regarding this feature are greatly appreciated. 
 
 ---
 
