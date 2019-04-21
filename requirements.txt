@@ -1,0 +1,5 @@
+pyburstlib>=1.1.0.dev0
+pyqrcode>=1.2.1
+pypng>=0.0.18
+pillow>=5.2.0
+requests>=2.18.4
